@@ -12,11 +12,15 @@ const conversationsRoute = require('./routes/conversations')
 const messagesRoute = require('./routes/messages')
 const multer = require('multer')
 const path = require('path')
-dotenv.config()
+require('dotenv').config()
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
-	console.log('connected to mongo')
-})
+mongoose.connect(
+	'mongodb+srv://uniloki:Nawood0913!@cluster0.gaml9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+	{ useNewUrlParser: true },
+	() => {
+		console.log('connected to mongo')
+	}
+)
 
 app.use('/images', express.static(path.join(__dirname, 'public/images')))
 
@@ -54,6 +58,6 @@ app.get('/', (req, res) => {
 	res.send('Welcome to homepage')
 })
 
-app.listen(8800, () => {
+app.listen(3001, () => {
 	console.log('Backend server is running')
 })
